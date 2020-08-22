@@ -1,0 +1,29 @@
+{% extends"clientes/layout.html" %}
+
+{% block title %} Remoção de Clientes {% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3> Você deseja remover o cliente abaixo?</h3>
+    </div>
+    <div class="body">
+        <div class="container">
+            <h5 class="card-title">Nome: {{ cliente.nome}}</h5>
+            <h5>Email: {{cliente.email}}</h5>
+            <h5>Data de Nascimento: {{cliente.data_nascimento.strftime("%d/%m/%Y")}}</h5>
+            <h5>Profissão: {{cliente.profissao}}</h5>
+            <h5>Sexo: {{cliente.sexo}}</h5>
+
+            <form method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-danger" type="submit">Remover</button>
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -15,15 +15,16 @@
     <tbody>
         {% for i in clientes %}
             <tr>
-                <td>{{i.nome}}</td>
-                <td>{{i.data_nascimento}}</td>
+                <td><a href="{{ url_for('listar_cliente', id=i.id) }}"> {{i.nome}} </a></td>
+                <td>{{i.data_nascimento.strftime("%d/%m/%Y")}}</td>
                 <td>{{i.profissao}}</td>
                 <td>
-                    <a href="#">Editar</a>
-                    <a href="#">Remover</a>
+                    <a href="{{ url_for('editar_cliente', id=i.id) }}">Editar</a>
+                    <a href="{{ url_for('remover_cliente', id=i.id) }}">Remover</a>
                 </td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
+<a href="{{ url_for('cadastrar_cliente') }}"> <button class="btn btn-primary"> Cadastrar Cliente </button> </a>
 {% endblock %}
